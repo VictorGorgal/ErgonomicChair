@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QPropertyAnimation
-from front_end.UI_base import Ui_MainWindow
+from UI.UI_base import Ui_MainWindow
 from PyQt6 import QtWidgets as qtw
 
 
