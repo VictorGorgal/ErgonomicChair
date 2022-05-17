@@ -25,15 +25,29 @@ class MQTT_SQL:
 
         self.save(payload)
 
-    @staticmethod
-    def save(payload):
+    def save(self, payload):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
+        self.check_date(payload, cursor)
         cursor.execute('insert into daily values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', payload.split(';'))
 
+        connection.commit()
         connection.close()
 
+    @staticmethod
+    def check_date(payload, cursor):
+        payload_date = payload.split(';')[0]
+
+        row = cursor.execute('select * from daily limit 1')
+        first_row = row.fetchall()[0]
+        db_date = first_row[0]
+
+        if payload_date == db_date:  # everything's ok
+            return
+
+        cursor.execute('delete from daily')
+        
     @staticmethod
     def initDB():
         if exists('./data.db'):
