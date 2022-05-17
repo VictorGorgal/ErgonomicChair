@@ -2,7 +2,6 @@ import paho.mqtt.client as paho
 import sqlite3
 from os.path import exists
 from multiprocessing import Process
-from time import sleep
 
 
 class SQL:
