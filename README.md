@@ -1,7 +1,7 @@
 # ErgonomicChair
 ### Early stages of the project
 
-This project consists of a "Smart Chair", with 8 sensors to monitor the user's posture.  
+This project consists of a "Smart Chair" with 8 sensors to monitor the user's posture.  
 The chair connects to the desktop app via MQTT mainly, but can be connected via USB for troubleshooting.  
 After the MQTT communication, the local server stores the data on the database using SQLite3.  
 The UI was made using QT Designer and PyQt6:  
