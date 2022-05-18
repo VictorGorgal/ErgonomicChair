@@ -288,7 +288,7 @@ class Ui_MainWindow(object):
         self.label.setAutoFillBackground(False)
         self.label.setStyleSheet("color: rgb(255, 255, 255);")
         self.label.setLineWidth(0)
-        self.label.setAlignment(QtCore.Qt.Alignment.AlignCenter)
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout_6.addWidget(self.label)
         self.frame_9 = QtWidgets.QFrame(self.frame_6)
@@ -310,7 +310,7 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(46, 255, 63);\n"
 "border-radius: 10px;")
-        self.label_4.setAlignment(QtCore.Qt.Alignment.AlignCenter)
+        self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_5.addWidget(self.label_4)
         spacerItem2 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -335,7 +335,7 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(255, 46, 46);\n"
 "border-radius: 10px;")
-        self.label_6.setAlignment(QtCore.Qt.Alignment.AlignCenter)
+        self.label_6.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_6.addWidget(self.label_6)
         spacerItem4 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -370,7 +370,7 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_2.setLineWidth(0)
         self.label_2.setScaledContents(False)
-        self.label_2.setAlignment(QtCore.Qt.Alignment.AlignCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_2.setWordWrap(False)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_7.addWidget(self.label_2)
