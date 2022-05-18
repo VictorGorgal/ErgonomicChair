@@ -41,13 +41,14 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.btn_connect.setAutoFillBackground(False)
         self.btn_config.setAutoFillBackground(False)
 
-        if self.page_widgets.currentWidget().objectName() == 'home_page':
+        page = self.page_widgets.currentWidget().objectName()
+        if page == 'home_page':
             self.btn_home.setAutoFillBackground(True)
-        if self.page_widgets.currentWidget().objectName() == 'graph_page':
+        if page == 'graph_page':
             self.btn_graphs.setAutoFillBackground(True)
-        if self.page_widgets.currentWidget().objectName() == 'connection_page':
+        if page == 'connection_page':
             self.btn_connect.setAutoFillBackground(True)
-        if self.page_widgets.currentWidget().objectName() == 'config_page':
+        if page == 'config_page':
             self.btn_config.setAutoFillBackground(True)
 
     def toggleMenu(self, maxWidth):
