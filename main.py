@@ -1,6 +1,8 @@
 from PyQt6.QtCore import QPropertyAnimation
 from UI.UI_base import Ui_MainWindow
 from PyQt6 import QtWidgets as qtw
+from pyqtgraph import PlotWidget, plot
+import pyqtgraph as pg
 
 
 class MainWindow(qtw.QMainWindow, Ui_MainWindow):
@@ -18,6 +20,9 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.btn_config.clicked.connect(self.config_btn_func)
 
         self.highlight_button()
+
+        hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
 
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
