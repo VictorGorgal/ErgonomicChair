@@ -6,7 +6,9 @@ The chair connects to the desktop app via MQTT mainly, but can be connected via 
 After the MQTT communication, the local server stores the data on the database using SQLite3.  
 The UI was made using QT Designer and PyQt6:  
 
-https://user-images.githubusercontent.com/94933775/168953086-38d64c5d-5acf-4c5d-a7ed-fe69eedfc2d0.mp4
+
+https://user-images.githubusercontent.com/94933775/169306776-e51699f6-c446-45f5-a91f-25bca25581f8.mp4
+
 
 # TODO
 - Refine the UI
