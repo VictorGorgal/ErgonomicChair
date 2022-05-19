@@ -3,12 +3,17 @@ from UI.UI_base import Ui_MainWindow
 from PyQt6 import QtWidgets as qtw
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
+from threading import Thread
+
+from win10toast import ToastNotifier
 
 
 class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
+        self.toaster = ToastNotifier()
+        self.thread = None
         self.page_widgets.setCurrentWidget(self.home_page)  # starts on home page
         self.slide_menu.setMaximumWidth(0)
 
@@ -18,6 +23,8 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.btn_graphs.clicked.connect(self.graphs_btn_func)
         self.btn_connect.clicked.connect(self.connect_btn_func)
         self.btn_config.clicked.connect(self.config_btn_func)
+
+        self.btn_notification.clicked.connect(self.notification_btn_func)
 
         self.highlight_button()
 
@@ -39,6 +46,17 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def config_btn_func(self):
         self.page_widgets.setCurrentWidget(self.config_page)
         self.highlight_button()
+
+    def notification_btn_func(self):
+        if isinstance(self.thread, Thread):
+            if self.thread.is_alive():
+                return
+
+        self.thread = Thread(target=self.notification, args=['titulo', 'mensagem', 3])
+        self.thread.start()
+
+    def notification(self, title, message, duration):
+        self.toaster.show_toast(title, message, duration=duration)
 
     def highlight_button(self):
         self.btn_home.setAutoFillBackground(False)

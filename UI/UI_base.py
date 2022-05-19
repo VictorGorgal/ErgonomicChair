@@ -53,8 +53,8 @@ class Ui_MainWindow(object):
         self.btn_menu.setMinimumSize(QtCore.QSize(45, 0))
         self.btn_menu.setMaximumSize(QtCore.QSize(45, 32))
         self.btn_menu.setStyleSheet("QPushButton:pressed {\n"
-                                    "    border-style: inset;\n"
-                                    "}")
+"    border-style: inset;\n"
+"}")
         self.btn_menu.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/menu-b.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -114,15 +114,15 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.btn_home.sizePolicy().hasHeightForWidth())
         self.btn_home.setSizePolicy(sizePolicy)
         self.btn_home.setMinimumSize(QtCore.QSize(0, 50))
-        self.btn_home.setAutoFillBackground(True)
+        self.btn_home.setAutoFillBackground(False)
         self.btn_home.setStyleSheet("QPushButton {\n"
-                                    "    background-color: rgb(50, 50, 50);\n"
-                                    "}\n"
-                                    "\n"
-                                    "QPushButton:pressed {\n"
-                                    "    background-color: rgb(55, 55, 55);\n"
-                                    "    border-style: inset;\n"
-                                    "}")
+"    background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    border-style: inset;\n"
+"}")
         self.btn_home.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("resources/c1-b4.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -145,13 +145,13 @@ class Ui_MainWindow(object):
         self.btn_graphs.setMinimumSize(QtCore.QSize(0, 50))
         self.btn_graphs.setAutoFillBackground(False)
         self.btn_graphs.setStyleSheet("QPushButton {\n"
-                                      "    background-color: rgb(50, 50, 50);\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton:pressed {\n"
-                                      "    background-color: rgb(55, 55, 55);\n"
-                                      "    border-style: inset;\n"
-                                      "}")
+"    background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    border-style: inset;\n"
+"}")
         self.btn_graphs.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("resources/c2-b1.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -170,13 +170,13 @@ class Ui_MainWindow(object):
         self.btn_connect.setMinimumSize(QtCore.QSize(0, 50))
         self.btn_connect.setAutoFillBackground(False)
         self.btn_connect.setStyleSheet("QPushButton {\n"
-                                       "    background-color: rgb(50, 50, 50);\n"
-                                       "}\n"
-                                       "\n"
-                                       "QPushButton:pressed {\n"
-                                       "    background-color: rgb(55, 55, 55);\n"
-                                       "    border-style: inset;\n"
-                                       "}")
+"    background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    border-style: inset;\n"
+"}")
         self.btn_connect.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/c3-b1.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -195,13 +195,13 @@ class Ui_MainWindow(object):
         self.btn_config.setMinimumSize(QtCore.QSize(0, 50))
         self.btn_config.setAutoFillBackground(False)
         self.btn_config.setStyleSheet("QPushButton {\n"
-                                      "    background-color: rgb(50, 50, 50);\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton:pressed {\n"
-                                      "    background-color: rgb(55, 55, 55);\n"
-                                      "    border-style: inset;\n"
-                                      "}")
+"    background-color: rgb(50, 50, 50);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    border-style: inset;\n"
+"}")
         self.btn_config.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("resources/c4-b1.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -210,8 +210,7 @@ class Ui_MainWindow(object):
         self.btn_config.setFlat(True)
         self.btn_config.setObjectName("btn_config")
         self.verticalLayout_4.addWidget(self.btn_config)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
-                                           QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_4.addItem(spacerItem)
         self.horizontalLayout_4.addWidget(self.icons_frame)
         self.horizontalLayout_2.addWidget(self.slide_menu)
@@ -252,7 +251,7 @@ class Ui_MainWindow(object):
         self.frame_5.setMinimumSize(QtCore.QSize(0, 20))
         self.frame_5.setMaximumSize(QtCore.QSize(16777215, 20))
         self.frame_5.setStyleSheet("background-color: rgb(48, 48, 48);\n"
-                                   "border-radius: 10px;")
+"border-radius: 10px;")
         self.frame_5.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
         self.frame_5.setLineWidth(0)
@@ -272,7 +271,7 @@ class Ui_MainWindow(object):
         self.frame_6.setMaximumSize(QtCore.QSize(500, 16777215))
         self.frame_6.setAutoFillBackground(False)
         self.frame_6.setStyleSheet("background-color: rgb(26,26,31);\n"
-                                   "border-radius: 10px;")
+"border-radius: 10px;")
         self.frame_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_6.setObjectName("frame_6")
@@ -289,7 +288,7 @@ class Ui_MainWindow(object):
         self.label.setAutoFillBackground(False)
         self.label.setStyleSheet("color: rgb(255, 255, 255);")
         self.label.setLineWidth(0)
-        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label.setAlignment(QtCore.Qt.Alignment.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout_6.addWidget(self.label)
         self.frame_9 = QtWidgets.QFrame(self.frame_6)
@@ -300,8 +299,7 @@ class Ui_MainWindow(object):
         self.frame_9.setObjectName("frame_9")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.frame_9)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem1 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem1)
         self.label_4 = QtWidgets.QLabel(self.frame_9)
         self.label_4.setMinimumSize(QtCore.QSize(120, 40))
@@ -310,13 +308,12 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                   "background-color: rgb(46, 255, 63);\n"
-                                   "border-radius: 10px;")
-        self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+"background-color: rgb(46, 255, 63);\n"
+"border-radius: 10px;")
+        self.label_4.setAlignment(QtCore.Qt.Alignment.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_5.addWidget(self.label_4)
-        spacerItem2 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem2)
         self.verticalLayout_6.addWidget(self.frame_9)
         self.frame_10 = QtWidgets.QFrame(self.frame_6)
@@ -327,8 +324,7 @@ class Ui_MainWindow(object):
         self.frame_10.setObjectName("frame_10")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.frame_10)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        spacerItem3 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem3)
         self.label_6 = QtWidgets.QLabel(self.frame_10)
         self.label_6.setMinimumSize(QtCore.QSize(120, 40))
@@ -337,17 +333,15 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("color: rgb(255, 255, 255);\n"
-                                   "background-color: rgb(255, 46, 46);\n"
-                                   "border-radius: 10px;")
-        self.label_6.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+"background-color: rgb(255, 46, 46);\n"
+"border-radius: 10px;")
+        self.label_6.setAlignment(QtCore.Qt.Alignment.AlignCenter)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_6.addWidget(self.label_6)
-        spacerItem4 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(172, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem4)
         self.verticalLayout_6.addWidget(self.frame_10)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
-                                            QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_6.addItem(spacerItem5)
         self.horizontalLayout_3.addWidget(self.frame_6)
         self.verticalLayout_5.addWidget(self.frame_4)
@@ -365,8 +359,7 @@ class Ui_MainWindow(object):
         self.frame_7.setObjectName("frame_7")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.frame_7)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        spacerItem6 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Policy.Minimum,
-                                            QtWidgets.QSizePolicy.Policy.Fixed)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         self.verticalLayout_7.addItem(spacerItem6)
         self.label_2 = QtWidgets.QLabel(self.frame_7)
         self.label_2.setMaximumSize(QtCore.QSize(16777215, 40))
@@ -377,7 +370,7 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_2.setLineWidth(0)
         self.label_2.setScaledContents(False)
-        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_2.setAlignment(QtCore.Qt.Alignment.AlignCenter)
         self.label_2.setWordWrap(False)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_7.addWidget(self.label_2)
@@ -387,8 +380,7 @@ class Ui_MainWindow(object):
         self.frame_12.setObjectName("frame_12")
         self.verticalLayout_7.addWidget(self.frame_12)
         self.horizontalLayout_7.addWidget(self.frame_7)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem7)
         self.frame_8 = QtWidgets.QFrame(self.graph_page)
         self.frame_8.setMinimumSize(QtCore.QSize(350, 0))
@@ -401,21 +393,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        spacerItem8 = QtWidgets.QSpacerItem(22, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem8 = QtWidgets.QSpacerItem(22, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem8)
         self.frame_11 = QtWidgets.QFrame(self.frame_8)
         self.frame_11.setMinimumSize(QtCore.QSize(300, 0))
         self.frame_11.setMaximumSize(QtCore.QSize(16777215, 300))
         self.frame_11.setStyleSheet("background-color: rgb(26, 26, 31);\n"
-                                    "border-radius: 10px;")
+"border-radius: 10px;")
         self.frame_11.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
         self.frame_11.setLineWidth(0)
         self.frame_11.setObjectName("frame_11")
         self.horizontalLayout_8.addWidget(self.frame_11)
-        spacerItem9 = QtWidgets.QSpacerItem(22, 20, QtWidgets.QSizePolicy.Policy.Expanding,
-                                            QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem9 = QtWidgets.QSpacerItem(22, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem9)
         self.horizontalLayout_7.addWidget(self.frame_8)
         self.page_widgets.addWidget(self.graph_page)
@@ -427,9 +417,23 @@ class Ui_MainWindow(object):
         self.page_widgets.addWidget(self.connection_page)
         self.config_page = QtWidgets.QWidget()
         self.config_page.setObjectName("config_page")
-        self.label_5 = QtWidgets.QLabel(self.config_page)
-        self.label_5.setGeometry(QtCore.QRect(250, 310, 211, 91))
-        self.label_5.setObjectName("label_5")
+        self.btn_notification = QtWidgets.QPushButton(self.config_page)
+        self.btn_notification.setGeometry(QtCore.QRect(30, 20, 131, 41))
+        self.btn_notification.setAutoFillBackground(False)
+        self.btn_notification.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(50, 50, 50);\n"
+"    border-radius:10px;    \n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(55, 55, 55);\n"
+"    border-style: inset;\n"
+"    border-radius:10px;    \n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.btn_notification.setFlat(True)
+        self.btn_notification.setObjectName("btn_notification")
         self.page_widgets.addWidget(self.config_page)
         self.verticalLayout_3.addWidget(self.page_widgets)
         self.horizontalLayout_2.addWidget(self.frame_3)
@@ -437,7 +441,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.page_widgets.setCurrentIndex(0)
+        self.page_widgets.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -448,12 +452,11 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "- %"))
         self.label_2.setText(_translate("MainWindow", "Seu progresso:"))
         self.label_3.setText(_translate("MainWindow", "Connections"))
-        self.label_5.setText(_translate("MainWindow", "Config"))
+        self.btn_notification.setText(_translate("MainWindow", "Notification"))
 
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
