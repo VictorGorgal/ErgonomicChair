@@ -31,7 +31,6 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.highlight_button()
 
         pg.setConfigOptions(antialias=True)  # anti-aliasing
-        self.create_graph()
 
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
@@ -40,6 +39,8 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def graphs_btn_func(self):
         self.page_widgets.setCurrentWidget(self.graph_page)
         self.highlight_button()
+
+        self.render_graph()
 
     def connect_btn_func(self):
         self.page_widgets.setCurrentWidget(self.connection_page)
@@ -52,10 +53,13 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def notification_btn_func(self):
         self.notify.show()
 
-    def create_graph(self):
-        print('aa')
+    def render_graph(self):
+        print('rendering')
         hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
+
+        if hasattr(self, 'graphWidget'):
+            self.graphWidget.close()
 
         self.graphWidget = pg.PlotWidget()  # create graph widget
         self.verticalLayout_8.addWidget(self.graphWidget)
