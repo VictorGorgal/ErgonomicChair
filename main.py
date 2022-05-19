@@ -3,16 +3,19 @@ from UI.UI_base import Ui_MainWindow
 from PyQt6 import QtWidgets as qtw
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
-from threading import Thread
-from win10toast import ToastNotifier
+from winotify import Notification
+from winotify.audio import Reminder
 
 
 class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
-        self.toaster = ToastNotifier()
-        self.thread = None
+        self.notify = Notification(app_id='Cadeira',
+                                   title='Title',
+                                   msg='Message',
+                                   duration='short')
+        self.notify.set_audio(Reminder, loop=False)
         self.page_widgets.setCurrentWidget(self.home_page)  # starts on home page
         self.slide_menu.setMaximumWidth(0)
 
@@ -47,12 +50,7 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.highlight_button()
 
     def notification_btn_func(self):
-        if isinstance(self.thread, Thread):
-            if self.thread.is_alive():
-                return
-
-        self.thread = Thread(target=self.notification, args=['titulo', 'mensagem', 3])
-        self.thread.start()
+        self.notify.show()
 
     def create_graph(self):
         print('aa')
@@ -63,9 +61,6 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.verticalLayout_8.addWidget(self.graphWidget)
         self.graphWidget.plot(hour, temperature, pen=pg.mkPen(color=(255, 255, 255)))
         self.graphWidget.setBackground((24, 24, 29))  # change background
-
-    def notification(self, title, message, duration):
-        self.toaster.show_toast(title, message, duration=duration)
 
     def highlight_button(self):
         self.btn_home.setAutoFillBackground(False)
