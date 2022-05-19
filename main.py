@@ -60,7 +60,7 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.graphWidget = pg.PlotWidget()  # create graph widget
         self.verticalLayout_8.addWidget(self.graphWidget)
         self.graphWidget.plot(hour, temperature, pen=pg.mkPen(color=(255, 255, 255)))
-        self.graphWidget.setBackground((24, 24, 29))  # change background
+        self.graphWidget.setBackground((24, 24, 26))  # change background
 
     def highlight_button(self):
         self.btn_home.setAutoFillBackground(False)

@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 720)
         MainWindow.setMinimumSize(QtCore.QSize(1280, 720))
-        MainWindow.setStyleSheet("background-color: rgb(24,24,29);")
+        MainWindow.setStyleSheet("background-color: rgb(24,24,26);")
         MainWindow.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         MainWindow.setDockNestingEnabled(False)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -270,7 +270,7 @@ class Ui_MainWindow(object):
         self.frame_6.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_6.setMaximumSize(QtCore.QSize(500, 16777215))
         self.frame_6.setAutoFillBackground(False)
-        self.frame_6.setStyleSheet("background-color: rgb(26,26,31);\n"
+        self.frame_6.setStyleSheet("background-color: rgb(26, 26, 29);\n"
 "border-radius: 10px;")
         self.frame_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -398,7 +398,7 @@ class Ui_MainWindow(object):
         self.frame_11 = QtWidgets.QFrame(self.frame_8)
         self.frame_11.setMinimumSize(QtCore.QSize(300, 0))
         self.frame_11.setMaximumSize(QtCore.QSize(16777215, 300))
-        self.frame_11.setStyleSheet("background-color: rgb(26, 26, 31);\n"
+        self.frame_11.setStyleSheet("background-color: rgb(26, 26, 29);\n"
 "border-radius: 10px;")
         self.frame_11.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
@@ -441,7 +441,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.page_widgets.setCurrentIndex(1)
+        self.page_widgets.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
