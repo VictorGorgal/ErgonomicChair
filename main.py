@@ -4,7 +4,6 @@ from PyQt6 import QtWidgets as qtw
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 from threading import Thread
-
 from win10toast import ToastNotifier
 
 
@@ -28,8 +27,8 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
         self.highlight_button()
 
-        hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
+        pg.setConfigOptions(antialias=True)  # anti-aliasing
+        self.create_graph()
 
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
@@ -54,6 +53,16 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
         self.thread = Thread(target=self.notification, args=['titulo', 'mensagem', 3])
         self.thread.start()
+
+    def create_graph(self):
+        print('aa')
+        hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
+
+        self.graphWidget = pg.PlotWidget()  # create graph widget
+        self.verticalLayout_8.addWidget(self.graphWidget)
+        self.graphWidget.plot(hour, temperature, pen=pg.mkPen(color=(255, 255, 255)))
+        self.graphWidget.setBackground((24, 24, 29))  # change background
 
     def notification(self, title, message, duration):
         self.toaster.show_toast(title, message, duration=duration)
