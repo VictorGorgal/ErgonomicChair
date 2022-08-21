@@ -1,6 +1,8 @@
 import paho.mqtt.client as paho
 import sqlite3
 from os.path import exists
+from json import loads
+from datetime import datetime
 
 
 class SQL:
@@ -111,16 +113,26 @@ class MQTT:
 
     def on_message(self, _, __, msg):
         payload = msg.payload.decode('ascii')
-        print(f'Topic:{msg.topic}\nPayload:{payload}')
+
+        date = datetime.now()
+        time = date.strftime('%d/%m/%Y;%H:%M:%S')
+
+        payload = f'{time};{payload}'
+
+        print(f'Topic: {msg.topic}\nPayload: {payload}')
 
         self.sql.save(payload)
 
 
 def start():
-    server = MQTT(topic='cadeira/1',
+    server = MQTT(topic='chairs/1',
                   username='victor',
                   password='morenamorenas',
-                  broker='192.168.10.6')
+                  broker='192.168.10.8')
 
     print('Starting server...')
     server.client.loop_forever()
+
+
+if __name__ == '__main__':
+    start()

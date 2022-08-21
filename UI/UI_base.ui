@@ -600,7 +600,7 @@ QPushButton:pressed {
             <widget class="QWidget" name="home_page">
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
-               <widget class="QFrame" name="frame_5">
+               <widget class="QFrame" name="daily_progress">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -626,6 +626,23 @@ border-radius: 10px;</string>
                 <property name="lineWidth">
                  <number>0</number>
                 </property>
+                <layout class="QHBoxLayout" name="daily_layout">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                </layout>
                </widget>
               </item>
               <item>

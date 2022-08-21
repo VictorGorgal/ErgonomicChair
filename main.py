@@ -32,6 +32,31 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
         pg.setConfigOptions(antialias=True)  # anti-aliasing
 
+        policy = qtw.QSizePolicy(qtw.QSizePolicy.Policy.Minimum, qtw.QSizePolicy.Policy.Fixed)
+        self.test_frame = qtw.QPushButton()
+        self.test_frame.setStyleSheet("""background-color: rgb(46, 255, 63);
+                                         border-radius: 10px;""")
+
+        self.test_frame.setSizePolicy(policy)
+        self.test_frame.setMaximumHeight(20)
+        # self.test_frame.setGeometry(1500, 0, 30, 20)
+
+        self.test_frame2 = qtw.QPushButton()
+        self.test_frame2.setStyleSheet("""background-color: rgb(255, 46, 46);
+                                          border-radius: 10px;""")
+        self.test_frame2.setSizePolicy(policy)
+        self.test_frame2.setMaximumHeight(20)
+
+        self.s1 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
+        self.s2 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
+        self.s3 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
+
+        self.daily_layout.addItem(self.s1)
+        self.daily_layout.addWidget(self.test_frame)
+        self.daily_layout.addItem(self.s2)
+        self.daily_layout.addWidget(self.test_frame2)
+        self.daily_layout.addItem(self.s3)
+
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
         self.highlight_button()
@@ -40,7 +65,7 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.page_widgets.setCurrentWidget(self.graph_page)
         self.highlight_button()
 
-        self.render_graph()
+        self.render_graph()  # refresh graph
 
     def connect_btn_func(self):
         self.page_widgets.setCurrentWidget(self.connection_page)

@@ -7,6 +7,7 @@ class Interface:
         self.sql = SQL('data.db')
 
         p1 = Process(target=start)  # starts MQTT on another process
+        p1.daemon = True  # closes thread when program finishes
         p1.start()
 
     def get_daily(self):
@@ -40,7 +41,10 @@ class Interface:
             else:
                 not_ok += 1
 
-        percentage = round(ok * 100 / (ok + not_ok), 2)
+        if ok + not_ok == 0:
+            percentage = 0
+        else:
+            percentage = round(ok * 100 / (ok + not_ok), 2)
 
         self.sql.close()
 
