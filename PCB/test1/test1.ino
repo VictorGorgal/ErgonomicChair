@@ -75,8 +75,10 @@ void loop() {
     connectMqtt();
   }
 
-  if (millis() - delta > 300000) {
+  if (millis() - delta > 60000) {
     Serial.println("Sending...");
+    
+    // Don't send if all sensors are 0
     publish_MQTT("1;1;1;1;1;1;1;1");
 
     delta = millis();
