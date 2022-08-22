@@ -775,7 +775,7 @@ border-radius: 10px;</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_4">
+                        <widget class="QLabel" name="daily_ok">
                          <property name="minimumSize">
                           <size>
                            <width>120</width>
@@ -849,7 +849,7 @@ border-radius: 10px;</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_6">
+                        <widget class="QLabel" name="daily_wrong">
                          <property name="minimumSize">
                           <size>
                            <width>120</width>
