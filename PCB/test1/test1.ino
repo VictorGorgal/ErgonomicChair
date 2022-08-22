@@ -75,9 +75,9 @@ void loop() {
     connectMqtt();
   }
 
-  if (millis() - delta > 5000) {
+  if (millis() - delta > 300000) {
     Serial.println("Sending...");
-    publish_MQTT("1;1;1;1;0;0;0;0");
+    publish_MQTT("1;1;1;1;1;1;1;1");
 
     delta = millis();
   }
