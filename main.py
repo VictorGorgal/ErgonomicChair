@@ -9,6 +9,9 @@ from MQTT_SQL.interface import Interface
 
 
 def generateDailyFrame(color, size):
+    if color == (48, 48, 48):
+        size -= 5
+
     policy = qtw.QSizePolicy(qtw.QSizePolicy.Policy.Expanding, qtw.QSizePolicy.Policy.Fixed)
     policy.setHorizontalStretch(size)
 
@@ -52,7 +55,6 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         pg.setConfigOptions(antialias=True)  # anti-aliasing
 
         self.interface = Interface()
-        self.createDailyProgressBar()
         self.updateHome()
 
     def home_btn_func(self):
@@ -78,16 +80,22 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.notify.show()
 
     def updateHome(self):
+        self.createDailyProgressBar()
         percentage = self.interface.get_percentage()
 
         self.daily_ok.setText(f'{percentage} %')
         self.daily_wrong.setText(f'{100 - percentage} %')
 
     def createDailyProgressBar(self):
+        # Clears progress bar
+        for i in reversed(range(self.daily_layout.count())):
+            self.daily_layout.itemAt(i).widget().setParent(None)
+
+        # Gets info from database interface
         frames = self.interface.get_daily_list()
-        # frames = [(self.GREEN, 20), (self.GRAY, 20), (self.RED, 40), (self.GREEN, 1)]
 
         for frame in frames:
+            # Gets color
             if frame[0] == self.interface.GOOD:
                 color = self.GREEN
             elif frame[0] == self.interface.BAD:
@@ -95,6 +103,7 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
             else:
                 color = self.GRAY
 
+            # Adds frame to progress bar
             self.daily_layout.addWidget(generateDailyFrame(color, frame[1]))
 
     def render_graph(self):
