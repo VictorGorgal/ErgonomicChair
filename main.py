@@ -5,17 +5,36 @@ from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 from winotify import Notification
 from winotify.audio import Reminder
+from MQTT_SQL.interface import Interface
+
+
+def generateDailyFrame(color, size):
+    policy = qtw.QSizePolicy(qtw.QSizePolicy.Policy.Expanding, qtw.QSizePolicy.Policy.Fixed)
+    policy.setHorizontalStretch(size)
+
+    frame = qtw.QPushButton()
+    frame.setStyleSheet(f'background-color: rgb{color};\nborder-radius: 10px;')
+    frame.setMaximumHeight(20)
+    frame.setSizePolicy(policy)
+
+    return frame
 
 
 class MainWindow(qtw.QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
+
+        self.GREEN = (46, 255, 63)
+        self.RED = (255, 46, 46)
+        self.GRAY = (48, 48, 48)
+
         self.notify = Notification(app_id='Cadeira',
                                    title='Title',
                                    msg='Message',
                                    duration='short')
         self.notify.set_audio(Reminder, loop=False)
+
         self.page_widgets.setCurrentWidget(self.home_page)  # starts on home page
         self.slide_menu.setMaximumWidth(0)
 
@@ -32,34 +51,14 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
         pg.setConfigOptions(antialias=True)  # anti-aliasing
 
-        policy = qtw.QSizePolicy(qtw.QSizePolicy.Policy.Minimum, qtw.QSizePolicy.Policy.Fixed)
-        self.test_frame = qtw.QPushButton()
-        self.test_frame.setStyleSheet("""background-color: rgb(46, 255, 63);
-                                         border-radius: 10px;""")
-
-        self.test_frame.setSizePolicy(policy)
-        self.test_frame.setMaximumHeight(20)
-        # self.test_frame.setGeometry(1500, 0, 30, 20)
-
-        self.test_frame2 = qtw.QPushButton()
-        self.test_frame2.setStyleSheet("""background-color: rgb(255, 46, 46);
-                                          border-radius: 10px;""")
-        self.test_frame2.setSizePolicy(policy)
-        self.test_frame2.setMaximumHeight(20)
-
-        self.s1 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
-        self.s2 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
-        self.s3 = qtw.QSpacerItem(22, 20, qtw.QSizePolicy.Policy.Preferred, qtw.QSizePolicy.Policy.Minimum)
-
-        self.daily_layout.addItem(self.s1)
-        self.daily_layout.addWidget(self.test_frame)
-        self.daily_layout.addItem(self.s2)
-        self.daily_layout.addWidget(self.test_frame2)
-        self.daily_layout.addItem(self.s3)
+        self.interface = Interface()
+        self.createDailyProgressBar()
+        self.updateHome()
 
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
         self.highlight_button()
+        self.updateHome()
 
     def graphs_btn_func(self):
         self.page_widgets.setCurrentWidget(self.graph_page)
@@ -77,6 +76,26 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
     def notification_btn_func(self):
         self.notify.show()
+
+    def updateHome(self):
+        percentage = self.interface.get_percentage()
+
+        self.daily_ok.setText(f'{percentage} %')
+        self.daily_wrong.setText(f'{100 - percentage} %')
+
+    def createDailyProgressBar(self):
+        frames = self.interface.get_daily_list()
+        # frames = [(self.GREEN, 20), (self.GRAY, 20), (self.RED, 40), (self.GREEN, 1)]
+
+        for frame in frames:
+            if frame[0] == self.interface.GOOD:
+                color = self.GREEN
+            elif frame[0] == self.interface.BAD:
+                color = self.RED
+            else:
+                color = self.GRAY
+
+            self.daily_layout.addWidget(generateDailyFrame(color, frame[1]))
 
     def render_graph(self):
         print('rendering')

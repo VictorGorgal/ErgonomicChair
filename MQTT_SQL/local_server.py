@@ -109,7 +109,7 @@ class MQTT:
         self.client.on_message = self.on_message
         self.client.subscribe(self.topic, qos=1)
 
-        self.sql = SQL('data.db')
+        self.sql = SQL('D:/Scripts/Python/Fetin/Fetin 2022/Cadeira/MQTT_SQL/data.db')
 
     def on_message(self, _, __, msg):
         payload = msg.payload.decode('ascii')
@@ -117,7 +117,7 @@ class MQTT:
         date = datetime.now()
         time = date.strftime('%d/%m/%Y;%H:%M:%S')
 
-        payload = f'{time};{payload}'
+        #payload = f'{time};{payload}'
 
         print(f'Topic: {msg.topic}\nPayload: {payload}')
 
