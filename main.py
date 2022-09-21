@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QPropertyAnimation
 from UI.UI_base import Ui_MainWindow
 from PyQt6 import QtWidgets as qtw
+from PyQt6 import QtCore as qtc
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 from winotify import Notification
@@ -57,6 +58,10 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.interface = Interface()
         self.updateHome()
 
+        self.checkThreadTimer = qtc.QTimer()
+        self.checkThreadTimer.timeout.connect(self.update_measurement)
+        self.checkThreadTimer.start(500)
+
     def home_btn_func(self):
         self.page_widgets.setCurrentWidget(self.home_page)
         self.highlight_button()
@@ -93,8 +98,9 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
 
         # Gets info from database interface
         frames = self.interface.get_daily_list()
+        total_minutes = 0
 
-        for frame in frames:
+        for idx, frame in enumerate(frames):
             # Gets color
             if frame[0] == self.interface.GOOD:
                 color = self.GREEN
@@ -103,8 +109,37 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
             else:
                 color = self.GRAY
 
+            total_minutes += frame[1]
+
             # Adds frame to progress bar
-            self.daily_layout.addWidget(generateDailyFrame(color, frame[1]))
+            button = generateDailyFrame(color, frame[1])
+            if idx == 0:
+                button.clicked.connect(lambda: self.update_bar_labels("00:00", "10:09"))
+            elif idx == 1:
+                button.clicked.connect(lambda: self.update_bar_labels("10:09", "10:39"))
+            elif idx == 2:
+                button.clicked.connect(lambda: self.update_bar_labels("10:39", "11:21"))
+            elif idx == 3:
+                button.clicked.connect(lambda: self.update_bar_labels("11:21", "12:04"))
+            elif idx == 4:
+                button.clicked.connect(lambda: self.update_bar_labels("12:04", "14:42"))
+            elif idx == 5:
+                button.clicked.connect(lambda: self.update_bar_labels("14:42", "15:24"))
+            elif idx == 6:
+                button.clicked.connect(lambda: self.update_bar_labels("15:24", "15:50"))
+            elif idx == 7:
+                button.clicked.connect(lambda: self.update_bar_labels("15:50", "16:09"))
+            elif idx == 8:
+                button.clicked.connect(lambda: self.update_bar_labels("16:09", "16:36"))
+            elif idx == 9:
+                button.clicked.connect(lambda: self.update_bar_labels("16:36", "16:54"))
+            elif idx == 10:
+                button.clicked.connect(lambda: self.update_bar_labels("16:54", "23:59"))
+            self.daily_layout.addWidget(button)
+
+    def update_bar_labels(self, startTime, endTime):
+        self.start_label.setText(startTime)
+        self.end_label.setText(endTime)
 
     def render_graph(self):
         print('rendering')
@@ -120,6 +155,22 @@ class MainWindow(qtw.QMainWindow, Ui_MainWindow):
         self.graphWidget.setBackground((24, 24, 26))  # change background
         self.graphWidget.setLabel('left', '% DO DIA COM POSTURA BOA')
         self.graphWidget.setLabel('bottom', 'DIA DO MES')
+
+    def update_measurement(self):
+        text = self.interface.get_real_time()
+        sensors = text.split(';')
+
+        correct = sensors.count('1')
+        if correct >= 7:
+            self.real_time.setText('Correta!')
+            self.real_time.setStyleSheet('color: rgb(255, 255, 255);\n'
+                                         'background-color: rgb(46, 255, 63);\n'
+                                         'border-radius: 10px;')
+        else:
+            self.real_time.setText('Errada!')
+            self.real_time.setStyleSheet('color: rgb(255, 255, 255);\n'
+                                         'background-color: rgb(255, 46, 46);\n'
+                                         'border-radius: 10px;')
 
     def highlight_button(self):
         self.btn_home.setAutoFillBackground(False)

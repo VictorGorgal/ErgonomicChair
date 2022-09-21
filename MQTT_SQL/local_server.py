@@ -4,6 +4,8 @@ from os.path import exists
 from json import loads
 from datetime import datetime
 
+import serial
+
 
 class SQL:
     def __init__(self, file):
@@ -67,6 +69,14 @@ class SQL:
 
         self.clear('daily', cursor)
 
+    def save_real_time(self, payload):
+        cursor = self.open()
+
+        cursor.execute('UPDATE realTime SET measurement=(?) WHERE id=0', [payload])
+
+        self.connection.commit()
+        self.close()
+
     def initDB(self):
         if exists(self.file):
             return
@@ -90,48 +100,40 @@ class SQL:
                         date text,
                         percentage real)""")
 
+        cursor.execute("""create table realTime (measurement text)""")
+
         self.close()
 
 
-class MQTT:
-    def __init__(self, topic, username, password, broker, port=1883, client_id='cadeira1'):
-        self.BROKER = broker
-        self.PORT = port
-        self.ID = client_id
-
-        self.topic = topic
-        self.username = username
-        self.password = password
-
-        self.client = paho.Client(client_id=self.ID, userdata=None, protocol=paho.MQTTv311)
-        self.client.username_pw_set(self.username, self.password)
-        self.client.connect(self.BROKER, self.PORT)
-        self.client.on_message = self.on_message
-        self.client.subscribe(self.topic, qos=1)
+class Serial:
+    def __init__(self, com='COM3'):
+        self.node = serial.Serial(com, 9600, timeout=5)
 
         self.sql = SQL('D:/Scripts/Python/Fetin/Fetin 2022/Cadeira/MQTT_SQL/data.db')
 
-    def on_message(self, _, __, msg):
-        payload = msg.payload.decode('ascii')
+    def read_serial(self):
+        while True:
+            recieved = self.node.readline()
+            self.on_message(recieved)
 
-        date = datetime.now()
-        time = date.strftime('%d/%m/%Y;%H:%M:%S')
+    def on_message(self, msg):
+        if len(msg) > 150:
+            return
+        if msg == b'':
+            return
 
-        #payload = f'{time};{payload}'
+        payload = msg.decode('ascii').strip()
 
-        print(f'Topic: {msg.topic}\nPayload: {payload}')
+        # print(f'Payload: {payload}')
 
-        self.sql.save(payload)
+        self.sql.save_real_time(payload)
 
 
 def start():
-    server = MQTT(topic='chairs/1',
-                  username='victor',
-                  password='morenamorenas',
-                  broker='192.168.10.8')
+    server = Serial(com='COM5')
 
     print('Starting server...')
-    server.client.loop_forever()
+    server.read_serial()
 
 
 if __name__ == '__main__':

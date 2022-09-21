@@ -18,6 +18,12 @@ class Interface:
         p1.daemon = True  # closes thread when program finishes
         p1.start()
 
+    def get_real_time(self):
+        cursor = self.sql.open()
+        measurement = list(cursor.execute('select * from realTime'))[0][1]
+        self.sql.close()
+        return measurement
+
     def get_daily(self):
         daily = []
         cursor = self.sql.open()
@@ -112,7 +118,9 @@ if __name__ == '__main__':
     interface = Interface()
     while True:
         t = input('insert: ')
-        if t == 'd':
+        if t == 'r':
+            print(interface.get_real_time())
+        elif t == 'd':
             print(interface.get_daily())
         elif t == 'dl':
             print(interface.get_daily_list())
